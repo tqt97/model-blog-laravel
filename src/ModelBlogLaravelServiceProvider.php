@@ -53,6 +53,9 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
         ], 'permission-config');
 
         $this->publishes([
+            __DIR__.'/Models/Article.php' => $this->app->app_path()."/models/Article.php"]);
+
+        $this->publishes([
             __DIR__.'/../database/migrations/create_model-blog-laravel_table.php.stub' => $this->getMigrationFileName('create_model-blog-laravel_table.php'),
         ], 'permission-migrations');
     }
