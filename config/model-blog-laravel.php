@@ -10,6 +10,6 @@ return [
         'articles' => 'articles',
         'categories' => 'categories',
         'tags' => 'tags',
-        'pivot' => 'article_tag'
+        'pivot' => 'article_tag',
     ],
 ];
