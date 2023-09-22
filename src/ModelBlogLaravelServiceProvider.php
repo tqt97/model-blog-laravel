@@ -14,10 +14,10 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
     /**
      * @throws BindingResolutionException
      */
-//    public function boot()
-//    {
-//        $this->offerPublishing();
-//    }
+    //    public function boot()
+    //    {
+    //        $this->offerPublishing();
+    //    }
 
     public function configurePackage(Package $package): void
     {

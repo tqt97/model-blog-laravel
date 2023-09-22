@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Tqt97\ModelBlogLaravel\Contracts\Article as ArticleContract;
 
-class Article extends Model implements  ArticleContract
+class Article extends Model implements ArticleContract
 {
     use HasFactory;
 
@@ -19,7 +19,7 @@ class Article extends Model implements  ArticleContract
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function category(): BelongsTo
