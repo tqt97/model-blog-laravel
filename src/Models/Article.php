@@ -2,8 +2,8 @@
 
 namespace Tqt97\ModelBlogLaravel\Models;
 
-use App\Models\Category;
-use App\Models\Tag;
+use Tqt97\ModelBlogLaravel\Models\Category;
+use Tqt97\ModelBlogLaravel\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
