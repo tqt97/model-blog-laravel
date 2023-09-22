@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Article extends Model implements  ArticleContract
+class Article extends Model implements ArticleContract
 {
     use HasFactory;
 
@@ -18,7 +18,7 @@ class Article extends Model implements  ArticleContract
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function category(): BelongsTo
