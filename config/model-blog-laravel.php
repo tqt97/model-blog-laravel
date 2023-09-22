@@ -12,4 +12,11 @@ return [
         'tags' => 'tags',
         'pivot' => 'article_tag',
     ],
+
+    'models' => [
+        'article' => 'article',
+        'category' => 'category',
+        'tag' => 'tag',
+    ],
+
 ];

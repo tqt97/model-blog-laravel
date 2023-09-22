@@ -14,10 +14,10 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
     /**
      * @throws BindingResolutionException
      */
-    public function boot()
-    {
-        $this->offerPublishing();
-    }
+//    public function boot()
+//    {
+//        $this->offerPublishing();
+//    }
 
     public function configurePackage(Package $package): void
     {
@@ -71,5 +71,12 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
             ->flatMap(fn($path) => $filesystem->glob($path . '*_' . $migrationFileName))
             ->push($this->app->databasePath() . "/migrations/{$timestamp}_{$migrationFileName}")
             ->first();
+    }
+
+    protected function registerModelBindings(): void
+    {
+        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\ArticleContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.article']));
+        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\CategoryContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.category']));
+        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\TagContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.tag']));
     }
 }
