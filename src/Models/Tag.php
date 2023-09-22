@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTqt97\ModelBlogLaravel\Models;
+namespace Tqt97\ModelBlogLaravel\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
