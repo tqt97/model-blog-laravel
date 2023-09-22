@@ -39,34 +39,34 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
      */
     protected function offerPublishing(): void
     {
-        if (!$this->app->runningInConsole()) {
+        if (! $this->app->runningInConsole()) {
             return;
         }
 
-        if (!function_exists('config_path')) {
+        if (! function_exists('config_path')) {
             // function not available and 'publish' not relevant in Lumen
             return;
         }
 
         $this->publishes([
-            __DIR__ . '/../config/permission.php' => config_path('permission.php'),
+            __DIR__.'/../config/permission.php' => config_path('permission.php'),
         ], 'permission-config');
 
-//        $this->publishes([
-//            __DIR__ . '/Models/Article.php' => $this->app->app_path() . '/models/Article.php']);
+        //        $this->publishes([
+        //            __DIR__ . '/Models/Article.php' => $this->app->app_path() . '/models/Article.php']);
 
         $this->publishes([
-            __DIR__ . '/Models/Article.php' => $this->getModelFileName('Article.php'),
+            __DIR__.'/Models/Article.php' => $this->getModelFileName('Article.php'),
         ]);
         $this->publishes([
-            __DIR__ . '/Models/Category.php' => $this->getModelFileName('Category.php'),
+            __DIR__.'/Models/Category.php' => $this->getModelFileName('Category.php'),
         ]);
         $this->publishes([
-            __DIR__ . '/Models/Tag.php' => $this->getModelFileName('Tag.php'),
+            __DIR__.'/Models/Tag.php' => $this->getModelFileName('Tag.php'),
         ]);
 
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_model-blog-laravel_table.php.stub' => $this->getMigrationFileName('create_model-blog-laravel_table.php'),
+            __DIR__.'/../database/migrations/create_model-blog-laravel_table.php.stub' => $this->getMigrationFileName('create_model-blog-laravel_table.php'),
         ], 'permission-migrations');
     }
 
@@ -81,9 +81,9 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
 
         $filesystem = $this->app->make(Filesystem::class);
 
-        return Collection::make([$this->app->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR])
-            ->flatMap(fn($path) => $filesystem->glob($path . '*_' . $migrationFileName))
-            ->push($this->app->databasePath() . "/migrations/{$timestamp}_{$migrationFileName}")
+        return Collection::make([$this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR])
+            ->flatMap(fn ($path) => $filesystem->glob($path.'*_'.$migrationFileName))
+            ->push($this->app->databasePath()."/migrations/{$timestamp}_{$migrationFileName}")
             ->first();
     }
 
@@ -91,16 +91,16 @@ class ModelBlogLaravelServiceProvider extends PackageServiceProvider
     {
         $filesystem = $this->app->make(Filesystem::class);
 
-        return Collection::make([$this->app->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR])
-            ->flatMap(fn($path) => $filesystem->glob($path . '*_' . $modelFileName))
-            ->push(app_path() . "/Models/{$modelFileName}")
+        return Collection::make([$this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR])
+            ->flatMap(fn ($path) => $filesystem->glob($path.'*_'.$modelFileName))
+            ->push(app_path()."/Models/{$modelFileName}")
             ->first();
     }
 
-//    protected function registerModelBindings(): void
-//    {
-//        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\ArticleContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.article']));
-//        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\CategoryContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.category']));
-//        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\TagContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.tag']));
-//    }
+    //    protected function registerModelBindings(): void
+    //    {
+    //        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\ArticleContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.article']));
+    //        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\CategoryContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.category']));
+    //        $this->app->bind(Tqt97\ModelBlogLaravel\Contracts\TagContract::class, fn ($app) => $app->make($app->config['model-blog-laravel.models.tag']));
+    //    }
 }
