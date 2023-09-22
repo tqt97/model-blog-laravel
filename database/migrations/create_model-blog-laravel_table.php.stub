@@ -51,7 +51,7 @@ return new class extends Migration
      */
     public function down()
     {
-        $tableNames = config('fi-blog.table_names');
+        $tableNames = config('model-blog-laravel.table_names');
 
         if (empty($tableNames)) {
             throw new \Exception('Error: config/model-blog-laravel.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.');

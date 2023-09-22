@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Tqt97\ModelBlogLaravel\Contracts\Article as ArticleContract;
 
 class Article extends Model implements  ArticleContract
 {
